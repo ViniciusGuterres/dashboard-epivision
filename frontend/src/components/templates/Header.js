@@ -5,4 +5,3 @@ const Head = styled.header`
     grid-area: header;
 `
 export default Head;
-
