@@ -4,9 +4,9 @@ const Form = styled.form`
     color: red;
     background-color: #fff;
     -webkit-box-shadow: 8px 10px 15px -6px rgba(0,0,0,0.65); 
-    box-shadow: 8px 10px 15px -6px rgba(0,0,0,0.65);
+    box-shadow: 8px 0px 19px -6px rgb(0 0 0 / 20%);
     border-radius: 5px;
-    width: 50%;
+    width: 60%;
 `
 
 const InputContainer = styled.div`
@@ -53,6 +53,16 @@ const InputCheckboxRowContainer = styled.div`
     align-items: center;
 `
 
+const ButtonSubmit = styled.button`
+    width: 100%;
+    background-color: rgb(39, 64, 115);
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+`
+
 const styledComponents = {
     Form,
     InputContainer,
@@ -61,7 +71,8 @@ const styledComponents = {
     Input,
     TitleContainer,
     InputCheckboxRowContainer,
-    InputCheckbox
+    InputCheckbox,
+    ButtonSubmit
 };
 
 export default styledComponents;

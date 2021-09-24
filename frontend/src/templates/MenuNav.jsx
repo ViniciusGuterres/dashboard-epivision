@@ -14,12 +14,13 @@ export default function MenuNav(props) {
             <nav>
                 <Ul>
                     <Li>
-                        Cadastrar colaborador
+                        <Link to="/cadastroFuncionario">Cadastrar colaborador</Link>
                     </Li>
 
                     <Li>
-                        Lista de colaboradores
+                        <Link to="/">Lista de colaboradores</Link>
                     </Li>
+
                 </Ul>
             </nav>
         </Aside>
