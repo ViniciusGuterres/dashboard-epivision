@@ -3,9 +3,7 @@ import {
     Route,
 } from 'react-router-dom';
 
-import Footer from '../templates/Footer';
-
-import EmployeeRegistration from './EmployeeRegistration';
+import EmployeeRegistration from './EmployeeRegistration.jsx';
 
 // Views
 
@@ -15,7 +13,7 @@ export default function Routes() {
         <Switch>
             {/* <Route path='/' component={} exact/> */}
             <Route path={'/cadastroFuncionario'} component={EmployeeRegistration}/>
-            <Route path='/' component={Footer} exact/>
+            {/* <Route path='/' component={''} exact/> */}
         </Switch>
     )
 }

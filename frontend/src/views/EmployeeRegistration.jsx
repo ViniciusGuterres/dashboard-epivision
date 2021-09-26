@@ -1,4 +1,4 @@
-import GenericForm from '../components/GenericForm.jsx';
+import GenericForm from '../components/genericForm/GenericForm.jsx';
 
 /**
  * @function EmployeeRegistration - View of the employee registration screen

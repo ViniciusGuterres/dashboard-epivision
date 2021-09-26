@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styledComponents from './Form'
+import styledComponents from './GenericForm'
 const {
     Form,
     InputContainer,

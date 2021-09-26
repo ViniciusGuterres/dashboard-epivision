@@ -1,16 +1,16 @@
 import React from "react";
 
 import { BrowserRouter } from "react-router-dom";
-import Routes from "./Routes.js";
+import Routes from "../Routes";
 
 // templates
-import Header from "../templates/Header.jsx";
-import Main from '../templates/Main.jsx';
-import MenuNav from "../templates/MenuNav.jsx";
-import Footer from '../templates/Footer.jsx';
+import Header from "./templates/header/Header.jsx";
+import Main from './templates/main/Main.jsx';
+import MenuNav from "./templates/menuNav/MenuNav.jsx";
+import Footer from './templates/footer/Footer.jsx';
 
 // styled components
-import ContainerHome from './Home';
+import ContainerHome from './Home.js';
 
 export default function Home() {
     return (
@@ -20,11 +20,9 @@ export default function Home() {
                 <MenuNav />
                 <Main>
                     <Routes />
-                    {/* <EmployeeRegistration /> */}
                 </Main>
                 <Footer />
             </BrowserRouter>
-
         </ContainerHome>
     )
 }
