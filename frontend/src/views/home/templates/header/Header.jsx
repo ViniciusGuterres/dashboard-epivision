@@ -24,8 +24,9 @@ export default function Header(props) {
             <HeaderContentLeft>
                 {/* Menu Icon */}
                 <FontAwesomeIcon
-                    style={{ color: '#000000', cursor: 'pointer', fontSize: '22px' }}
                     icon={faBars}
+                    style={{ color: '#00000094', cursor: 'pointer', fontSize: '22px' }}
+                    onClick={() => props.collapseNavMenu()}
                 />
 
                 {/* Title company name */}
@@ -48,23 +49,24 @@ export default function Header(props) {
             {/* Right div */}
             <HeaderContentRight>
                 {/* User logged */}
-                <span style={{marginRight: '20px'}}>vinicius C.</span>
+                <span style={{ marginRight: '20px' }}>vinicius C.</span>
 
 
                 {/* Notifications icon */}
-                <div style={{marginRight: '10px'}}>
-                <FontAwesomeIcon 
-                    icon={faBell}
-                    style={{cursor: 'pointer', color: 'rgb(105, 112, 122)', fontSize: '18px'}}
-                />
+                <div style={{ marginRight: '20px' }}>
+                    <FontAwesomeIcon
+                        icon={faBell}
+                        style={{ cursor: 'pointer', color: 'rgb(105, 112, 122)', fontSize: '18px' }}
+                    />
                 </div>
 
+                {/* Pipe Separator */}
                 <Pipe></Pipe>
-                
+
                 {/* Logout icon */}
                 <FontAwesomeIcon
                     icon={faSignOutAlt}
-                    style={{cursor: 'pointer', color: 'rgb(105, 112, 122)', fontSize: '20px', marginLeft: '20px'}}
+                    style={{ cursor: 'pointer', color: 'rgb(105, 112, 122)', fontSize: '20px', marginLeft: '20px' }}
                 />
             </HeaderContentRight>
         </Head>

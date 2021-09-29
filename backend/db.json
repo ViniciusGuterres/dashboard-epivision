@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "registry": "Vinicius",
+      "name": "Carvalho",
+      "birthDate": "Guterres",
+      "department": "Ti",
+      "vaccine": "pfizer",
+      "dose": "1°",
+      "id": 1
+    },
+    {
+      "registry": "45445",
+      "name": "Marcos",
+      "birthDate": "77/55/555",
+      "department": "Ti",
+      "id": 2
+    }
+  ]
+}

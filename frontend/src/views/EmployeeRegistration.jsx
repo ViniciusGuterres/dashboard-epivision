@@ -8,35 +8,40 @@ export default function EmployeeRegistration() {
     return (
         <GenericForm
             title={'Cadastro de colaborador'}
+            submitDatas={() => console.log('submited')}
+            submitButtonName="Cadastrar"
             formContents={
                 [
                     {
-                        label: 'Matricula',
-                        inputType: 'text'
+                        label: 'Matricula*',
+                        inputType: 'text',
+                        keyName: 'registry'
                     },
                     {
-                        label: 'Nome',
-                        inputType: 'text'
-                    },
-                    {
-                        label: 'Matrícula',
-                        inputType: 'number'
+                        label: 'Nome*',
+                        inputType: 'text',
+                        keyName: 'name'
                     },
                     {
                         label: 'Nascimento',
-                        inputType: 'text'
+                        inputType: 'text',
+                        keyName: 'birthDate'
                     },
                     {
-                        label: 'Setor',
-                        inputType: 'text'
+                        label: 'Setor*',
+                        inputType: 'text',
+                        keyName: 'department'
                     },
                     {
                         label: 'Grupo de risco',
-                        inputType: 'checkbox'
+                        inputType: 'checkbox',
+                        keyName: 'riskGroup'
                     },
                     {
                         label: 'Vacina',
-                        inputType: 'vacina'
+                        inputType: 'vacina',
+                        keyName: 'vaccine',
+                        subKeyName: 'dose'
                     },
                 ]
             }

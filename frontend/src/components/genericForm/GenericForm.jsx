@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { saveFormInputs } from '../../javascript/genericFuctions';
+
+import employeesUrl from '../../constants/index';
 
 import styledComponents from './GenericForm'
 const {
@@ -18,25 +21,50 @@ const {
  * @param {*} props 
  * @returns - node element
  */
-export default function GenericForm(props) {
+export default class GenericForm extends React.Component {
 
-    const [isUnlockedInput, setIsUnlockedInput] = useState(false)
+    constructor(props) {
+        super(props);
 
-    function unlockInput(event) {
+        this.formContents = props.formContents || [];
+        this.title = props.title || '';
+
+        // State
+        this.state = {
+            isUnlockedInput: false,
+            inputsDatas: {}
+        }
+    }
+
+
+    handleInputChange(event, keyName, inputType) {
+        // get the value of text or checkbox input types
+        const value = inputType !== 'checkbox' ? event.target.value : event.target.checked;
+
+        let test = {...this.state.datas}
+        test[keyName] = value
+
+        this.setState(prevState => ({
+            inputsDatas: {
+                ...prevState.inputsDatas,
+                [keyName]: value
+            }
+        }))
+    }
+
+    unlockInput(event) {
         const eventOption = event.target || '';
 
         if (eventOption.options[eventOption.selectedIndex].value !== 'não tomou vacina') {
-            setIsUnlockedInput(true);
-            console.log(isUnlockedInput);
+            this.setState({ isUnlockedInput: true })
         }
         if (eventOption.options[eventOption.selectedIndex].value === 'não tomou vacina') {
-            setIsUnlockedInput(false);
-            console.log(isUnlockedInput);
+            this.setState({ isUnlockedInput: false })
         }
 
     }
 
-    function layoutForCheckboxInput(inputType, label, index) {
+    layoutForCheckboxInput(inputType, label, keyName, subKeyName, index) {
 
         switch (inputType) {
             case 'text':
@@ -44,7 +72,10 @@ export default function GenericForm(props) {
                     <InputRowContainer key={`form-input: ${index}`}>
                         <Label>{label}</Label>
 
-                        <Input type={inputType} />
+                        <Input
+                            type={inputType}
+                            onChange={event => this.handleInputChange(event, keyName)}
+                        />
                     </InputRowContainer>
                 )
 
@@ -52,7 +83,11 @@ export default function GenericForm(props) {
                 return (
                     <InputCheckboxRowContainer>
                         <Label>{label}</Label>
-                        <InputCheckbox type={inputType} />
+
+                        <InputCheckbox
+                            type={inputType}
+                            onChange={event => this.handleInputChange(event, keyName, inputType)}
+                        />
                     </InputCheckboxRowContainer>
                 )
 
@@ -64,8 +99,12 @@ export default function GenericForm(props) {
 
                             <select
                                 name="vacina"
-                                onChange={event => unlockInput(event)}
+                                onChange={event => {
+                                    this.unlockInput(event);
+                                    this.handleInputChange(event, keyName);
+                                }}
                             >
+                                <option value="" selected disabled hidden>Selecione a vacina</option>
                                 <option value="não tomou vacina">Não tomou vacina</option>
                                 <option value="pfizer">Pfizer</option>
                                 <option value="coronaVac">CoronaVac</option>
@@ -76,17 +115,19 @@ export default function GenericForm(props) {
                         </InputCheckboxRowContainer>
 
                         {
-                            isUnlockedInput
+                            this.state.isUnlockedInput
                                 ?
                                 <InputCheckboxRowContainer>
-                                    <Label for="dose">{label}</Label>
+                                    <Label for="dose">Dose</Label>
 
                                     <select
                                         name="dose"
+                                        label="tes"
+                                        onChange={event => this.handleInputChange(event, subKeyName)}
                                     >
+                                        <option value="" selected disabled hidden>Selecione a dose</option>
                                         <option value="1°">1°</option>
                                         <option value="2°">2°</option>
-                                        <option value="3°">3°</option>
                                     </select>
                                 </InputCheckboxRowContainer>
                                 : null
@@ -100,37 +141,48 @@ export default function GenericForm(props) {
 
     }
 
-    function renderInputs() {
-        const formContents = props.formContents || [];
+    renderInputs() {
 
-        return formContents.map((content, index) => {
+
+        return this.formContents.map((content, index) => {
             const label = content.label || '';
             const inputType = content.inputType || '';
+            const keyName = content.keyName || '';
+            const subKeyName = content.subKeyName || '';
 
             return (
                 <>
-                    {layoutForCheckboxInput(inputType, label, index)}
+                    {this.layoutForCheckboxInput(inputType, label, keyName, subKeyName, index)}
                 </>
             )
         })
 
     };
 
-    return (
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-            <Form>
-                <TitleContainer>
-                    <span>{props.title || ''}</span>
-                </TitleContainer>
+    render() {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Form>
+                    <TitleContainer>
+                        <span>{this.title}</span>
+                    </TitleContainer>
 
-                <InputContainer>
-                    {renderInputs()}
-                </InputContainer>
+                    <InputContainer>
+                        {this.renderInputs()}
+                    </InputContainer>
 
-                <ButtonSubmit type="submit" >
-                    Enviar
-                </ButtonSubmit>
-            </Form>
-        </div>
-    )
+                    <ButtonSubmit
+                        type="submit"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            // Will make a http req to save the form
+                            saveFormInputs(employeesUrl, this.state.inputsDatas);
+                        }}
+                    >
+                        {this.props.submitButtonName || 'Enviar'}
+                    </ButtonSubmit>
+                </Form>
+            </div>
+        )
+    }
 }

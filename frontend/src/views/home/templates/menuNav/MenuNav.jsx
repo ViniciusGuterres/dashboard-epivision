@@ -1,5 +1,9 @@
 import React from 'react';
 
+// Font awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartPie } from '@fortawesome/free-solid-svg-icons'
+
 // router
 import { Link } from 'react-router-dom';
 
@@ -13,14 +17,38 @@ export default function MenuNav(props) {
         <Aside>
             <nav>
                 <Ul>
+                    {/* Dashboard Links */}
                     <Li>
-                        <Link to="/cadastroFuncionario">Cadastrar colaborador</Link>
+                        {/* Chart Pie icon */}
+                        <FontAwesomeIcon
+                            icon={faChartPie}
+                            style={{marginRight: '10px'}}
+                        />
+
+                        {/* Dashboard Link */}
+                        <Link
+                            to="/"
+                            style={{ textDecoration: 'none', color: '#fff' }}
+                        >
+                            Dashboard
+                        </Link>
                     </Li>
 
                     <Li>
-                        <Link to="/">Lista de colaboradores</Link>
+                        <Link
+                            to="/cadastroFuncionario"
+                            style={{ textDecoration: 'none', color: '#fff' }}>
+                            Cadastrar colaborador
+                        </Link>
                     </Li>
 
+                    <Li>
+                        <Link
+                            to="/listaDeFuncionarios"
+                            style={{ textDecoration: 'none', color: '#fff' }}>
+                            Lista de colaboradores
+                        </Link>
+                    </Li>
                 </Ul>
             </nav>
         </Aside>

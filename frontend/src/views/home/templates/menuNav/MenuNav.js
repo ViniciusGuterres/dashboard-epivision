@@ -1,24 +1,27 @@
 import styled from "styled-components";
 
 const Aside = styled.aside`
-    background: #fff;
+    background-color: #4e73df;
     grid-area: menu;
     box-shadow: rgb(122 122 158 / 15%) 4px 2px 6px;
-    width: 95%;
+    width: 100%;
 `;
 
 const Li = styled.li`
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ffffff2e;
     padding: 10px;
-
+    color: #fff;
+    width: 90%;
 `;
 
 const Ul = styled.ul`
-    font-size: 20px;
-    margin-top: 30px;
-    text-decoration: none;
+    font-size: 15px;
+    margin-top: 20px;
     list-style: none;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const modules = {Aside, Li, Ul};

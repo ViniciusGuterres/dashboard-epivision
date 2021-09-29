@@ -30,6 +30,7 @@ const SearchBar = styled.div`
     border: 1px solid #d8d8d8;
     border-radius: 3px;
     background-color: #eef2f8;
+    
 `
 
 const Input = styled.input`
@@ -37,8 +38,13 @@ const Input = styled.input`
     width: 80%;
     border: none;
     background-color: #eef2f8;
+    border-radius: 3px;
     outline: none;
+    &:focus {
+        border: 2px solid #274073;
+    }
 `
+
 
 const SearchIconContainer = styled.div`
     height: 100%; 

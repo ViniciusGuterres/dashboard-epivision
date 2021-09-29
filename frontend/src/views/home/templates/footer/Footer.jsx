@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { FooterContainer } from './Footer';
+
 export default function Footer() {
 
     return(
-        <footer style={{background: '#274073', gridArea: 'footer'}}>Footer</footer>
+        <FooterContainer>Todos os direitos reservados @ Epi vision 2021</FooterContainer>
     )
 }

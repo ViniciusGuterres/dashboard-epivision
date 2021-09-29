@@ -61,6 +61,10 @@ const ButtonSubmit = styled.button`
     border: none;
     cursor: pointer;
     border-radius: 2px;
+    padding: 5px;
+    &:hover {
+        background-color: #274073c4;
+    }
 `
 
 const styledComponents = {

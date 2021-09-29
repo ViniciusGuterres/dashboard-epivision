@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { BrowserRouter } from "react-router-dom";
 import Routes from "../Routes";
@@ -13,14 +13,35 @@ import Footer from './templates/footer/Footer.jsx';
 import ContainerHome from './Home.js';
 
 export default function Home() {
+
+    const [isCollapsed, setCollapsed] = useState(true);
+
+    /**
+     * @function collapseMenuNav - When clicks at the menu icon, it will toggle between collapse
+     */
+    function collapseNavMenu() {
+        setCollapsed(!isCollapsed);
+    }
+
     return (
-        <ContainerHome>
+        <ContainerHome
+            showMenuNav={isCollapsed}
+        >
             <BrowserRouter >
-                <Header />
-                <MenuNav />
+                <Header 
+                    collapseNavMenu={collapseNavMenu}
+                />
+
+                {/* Toggle Menu nav */}
+                {
+                    isCollapsed ? 
+                    <MenuNav /> : null
+                }
+
                 <Main>
                     <Routes />
                 </Main>
+                
                 <Footer />
             </BrowserRouter>
         </ContainerHome>
