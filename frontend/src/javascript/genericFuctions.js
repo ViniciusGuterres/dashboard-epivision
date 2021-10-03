@@ -12,6 +12,6 @@ export function saveFormInputs(url, formData) {
 }
 
 export function getDatas(url) {
-    axios['get'](url)
-        .then(res => console.log(res.data))
+    return axios['get'](url)
+        .then(res => res.data)
 }
