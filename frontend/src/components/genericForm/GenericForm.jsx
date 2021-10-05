@@ -176,6 +176,8 @@ export default class GenericForm extends React.Component {
                         onClick={(event) => {
                             event.preventDefault();
                             // Will make a http req to save the form
+                            this.props.showNotificationCard()
+                            this.props.exitNotificationCard()
                             saveFormInputs(employeesUrl, this.state.inputsDatas);
                         }}
                     >

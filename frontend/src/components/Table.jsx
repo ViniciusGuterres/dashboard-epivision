@@ -16,7 +16,7 @@ export default function Table({ columns, data }) {
 
     return (
         <table
-            style={{border: '1px solid #ccc'}}
+            style={{border: '1px solid #ccc',}}
             {...getTableProps()}>
             <thead >
                 {headerGroups.map(headerGroup => (
@@ -44,7 +44,7 @@ export default function Table({ columns, data }) {
                                         borderBottom: '1px solid #ccc',
                                         padding: '10px',
                                         textAlign: 'center',
-                                        backgroundColor: i % 2 === 0 ? '#eceded' : '#fff'
+                                        backgroundColor: i % 2 === 0 ? '#21283208' : '#fff'
                                     }}
                                 >{cell.render("Cell")}</td>;
                             })}

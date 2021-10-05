@@ -4,6 +4,7 @@ import React, { useEffect, useState, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 // Axios 
 import { getDatas } from '../javascript/genericFuctions';
@@ -29,17 +30,16 @@ export default function EmployeesTable() {
     const employeesDatas = tableDatas || [];
 
     return employeesDatas.map(employee => {
-
       // Handle Risk group icon
       const riskGroup = employee.riskGroup || '';
       const riskGroupIcon = riskGroup ?
         <FontAwesomeIcon
           icon={faCheckCircle}
-          style={style.iconPositive}
+          style={styles.iconPositive}
         /> :
         <FontAwesomeIcon
           icon={faTimesCircle}
-          style={style.iconNegative}
+          style={styles.iconNegative}
         />
 
       const employeeObj = {
@@ -49,7 +49,9 @@ export default function EmployeesTable() {
         department: employee.department || '',
         riskGroup: riskGroupIcon,
         vaccine: employee.vaccine || '',
-        dose: employee.dose || ''
+        dose: employee.dose || '',
+        edit: <FontAwesomeIcon icon={faEdit} style={styles.iconEdit}/>
+          || ''
       }
 
       return employeeObj;
@@ -91,7 +93,7 @@ export default function EmployeesTable() {
           },
           {
             Header: 'Editar',
-            accessor: ''
+            accessor: 'edit'
           }
         ]
       }
@@ -109,7 +111,7 @@ export default function EmployeesTable() {
   )
 }
 
-const style = {
+const styles = {
   iconPositive: {
     color: 'green',
     fontSize: '25px'
@@ -117,5 +119,10 @@ const style = {
   iconNegative: {
     color: 'red',
     fontSize: '25px'
+  },
+  iconEdit: {
+    color: '#ff9900',
+    fontSize: '25px',
+    cursor: 'pointer'
   }
 }
