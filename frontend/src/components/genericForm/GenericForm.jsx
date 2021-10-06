@@ -29,11 +29,15 @@ export default class GenericForm extends React.Component {
         this.formContents = props.formContents || [];
         this.title = props.title || '';
 
+        this.initial = {}
+
         // State
         this.state = {
             isUnlockedInput: false,
             inputsDatas: {}
         }
+
+        this.cleanInputDatas = this.cleanInputDatas.bind(this);
     }
 
 
@@ -41,7 +45,7 @@ export default class GenericForm extends React.Component {
         // get the value of text or checkbox input types
         const value = inputType !== 'checkbox' ? event.target.value : event.target.checked;
 
-        let test = {...this.state.datas}
+        let test = { ...this.state.datas }
         test[keyName] = value
 
         this.setState(prevState => ({
@@ -64,6 +68,12 @@ export default class GenericForm extends React.Component {
 
     }
 
+    cleanInputDatas() {
+        this.setState({
+            inputsDatas: {...this.initial}
+        });
+    }
+
     layoutForCheckboxInput(inputType, label, keyName, subKeyName, index) {
 
         switch (inputType) {
@@ -75,6 +85,7 @@ export default class GenericForm extends React.Component {
                         <Input
                             type={inputType}
                             onChange={event => this.handleInputChange(event, keyName)}
+                            value={this.state.inputsDatas.keyName}
                         />
                     </InputRowContainer>
                 )
@@ -161,7 +172,7 @@ export default class GenericForm extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
                 <Form>
                     <TitleContainer>
                         <span>{this.title}</span>
@@ -175,6 +186,7 @@ export default class GenericForm extends React.Component {
                         type="submit"
                         onClick={(event) => {
                             event.preventDefault();
+                            this.cleanInputDatas();                            
                             // Will make a http req to save the form
                             this.props.showNotificationCard()
                             this.props.exitNotificationCard()

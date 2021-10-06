@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faVirus } from '@fortawesome/free-solid-svg-icons';
+import { faVirusSlash } from '@fortawesome/free-solid-svg-icons';
 
 // Axios 
 import { getDatas } from '../javascript/genericFuctions';
@@ -40,7 +42,19 @@ export default function EmployeesTable() {
         <FontAwesomeIcon
           icon={faTimesCircle}
           style={styles.iconNegative}
-        />
+        />;
+
+      // Handle sick employee
+      const employeeSick = employee.covid || '';
+      const employeeSickIcon = employeeSick ?
+        <FontAwesomeIcon
+          icon={faVirus}
+          style={styles.iconPositive}
+        /> :
+        <FontAwesomeIcon
+          icon={faVirusSlash}
+          style={styles.iconNegative}
+        />;
 
       const employeeObj = {
         name: employee.name || '',
@@ -50,7 +64,8 @@ export default function EmployeesTable() {
         riskGroup: riskGroupIcon,
         vaccine: employee.vaccine || '',
         dose: employee.dose || '',
-        edit: <FontAwesomeIcon icon={faEdit} style={styles.iconEdit}/>
+        covid: employeeSickIcon,
+        edit: <FontAwesomeIcon icon={faEdit} style={styles.iconEdit} onClick={() => alert('test')}/>
           || ''
       }
 
@@ -92,6 +107,10 @@ export default function EmployeesTable() {
             accessor: 'riskGroup'
           },
           {
+            Header: 'Covid',
+            accessor: 'covid'
+          },
+          {
             Header: 'Editar',
             accessor: 'edit'
           }
@@ -102,7 +121,7 @@ export default function EmployeesTable() {
   );
 
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <Table
         columns={columns}
         data={handleDatas()}
