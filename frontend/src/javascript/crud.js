@@ -11,7 +11,11 @@ export function saveFormInputs(url, formData) {
         .then(res => res.data);
 }
 
-export function getDatas(url) {
+export async function getDatas(url) {
     return axios['get'](url)
         .then(res => res.data)
+}
+
+export async function removeData(url, id) {
+    axios['delete'](`${url}/${id}`)
 }

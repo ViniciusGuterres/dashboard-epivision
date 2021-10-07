@@ -1,64 +1,13 @@
 {
   "users": [
     {
-      "registry": "7778879",
-      "name": "Vinicius",
-      "birthDate": "21/02/2000",
-      "department": "TI",
-      "vaccine": "pfizer",
-      "dose": "2°",
-      "id": 1
-    },
-    {
-      "registry": "778778",
-      "name": "Marcos",
-      "birthDate": "21/07/1997",
-      "department": "Contabilidade",
-      "riskGroup": true,
-      "vaccine": "astrazeneca",
-      "covid": true,
-      "dose": "2°",
-      "id": 2
-    },
-    {
-      "registry": "77778",
-      "name": "Carlos",
-      "birthDate": "21/02/1997",
-      "department": "Rh",
-      "vaccine": "não tomou vacina",
       "id": 3
     },
     {
-      "registry": "77778",
-      "name": "Carlos",
-      "birthDate": "21/02/1997",
-      "department": "Rh",
-      "vaccine": "não tomou vacina",
-      "id": 3
+      "id": 4
     },
     {
-      "registry": "77778",
-      "name": "Carlos",
-      "birthDate": "21/02/1997",
-      "department": "Rh",
-      "vaccine": "não tomou vacina",
-      "id": 3
-    },
-    {
-      "registry": "77778",
-      "name": "Carlos",
-      "birthDate": "21/02/1997",
-      "department": "Rh",
-      "vaccine": "não tomou vacina",
-      "id": 3
-    },
-    {
-      "registry": "77778",
-      "name": "Carlos",
-      "birthDate": "21/02/1997",
-      "department": "Rh",
-      "vaccine": "não tomou vacina",
-      "id": 3
+      "id": 5
     }
   ]
 }

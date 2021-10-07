@@ -1,5 +1,5 @@
 import React from 'react';
-import { saveFormInputs } from '../../javascript/genericFuctions';
+import { saveFormInputs } from '../../javascript/crud';
 
 import employeesUrl from '../../constants/index';
 
@@ -172,7 +172,7 @@ export default class GenericForm extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
+            <div style={{ height: '100%' }}>
                 <Form>
                     <TitleContainer>
                         <span>{this.title}</span>
