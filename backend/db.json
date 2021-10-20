@@ -1,13 +1,14 @@
 {
   "users": [
     {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
+      "registry": "124234",
+      "name": "Carlos",
+      "birthDate": "25/02/2020",
+      "department": "Logistica",
+      "riskGroup": true,
+      "vaccine": "pfizer",
+      "dose": "1°",
+      "id": 1
     }
   ]
 }
