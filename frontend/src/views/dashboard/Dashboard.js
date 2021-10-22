@@ -22,9 +22,26 @@ const CardTitle = styled.span`
     font-size: 15px;
 `;
 
-const ContainerLineChart = styled.div`
+const ContainerBarChart = styled.div`
     width: 100%;
     height: 70%;
+    min-height: 350px;
+    margin-top: 30px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+`;
+
+const ContainerDonutChart = styled.div`
+    width: 50%;
+    height: 70%;
+    min-height: 280px;
+    margin-top: 30px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+`;
+
+const ContainerLineChart = styled.div`
+    width: 50%;
+    height: 70%;
+    min-height: 280px;
     margin-top: 30px;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
 `;
@@ -33,6 +50,8 @@ const styledComponents = {
     MainContainerCards,
     Card,
     CardTitle,
+    ContainerBarChart,
+    ContainerDonutChart,
     ContainerLineChart
 };
 

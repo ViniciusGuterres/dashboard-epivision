@@ -172,7 +172,7 @@ export default class GenericForm extends React.Component {
 
     render() {
         return (
-            <div style={{ height: '100%' }}>
+            <div style={{height: '100%'}}>
                 <Form>
                     <TitleContainer>
                         <span>{this.title}</span>

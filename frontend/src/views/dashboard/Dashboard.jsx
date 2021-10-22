@@ -14,14 +14,16 @@ const {
     MainContainerCards,
     Card,
     CardTitle,
-    ContainerLineChart
+    ContainerLineChart,
+    ContainerDonutChart,
+    ContainerBarChart
 } = styledComponents;
 
 export default class Dashboard extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
                 <MainContainerCards>
                     <InfoCards
                         title={'Casos de Covid'}
@@ -42,21 +44,102 @@ export default class Dashboard extends React.Component {
                         themeColor={'#c91010c7'} />
                 </MainContainerCards>
 
-                <ContainerLineChart>
+                <ContainerBarChart>
                     <div
                         style={{
                             height: '20%',
                             borderBottom: '1px solid #00000042',
                             display: 'flex',
                             alignItems: 'center',
+                            padding: '10px'
                         }}
                     >
-                        <span style={{marginLeft: '20px'}}>Progresso do covid</span>
+                        <span style={{ marginLeft: '20px' }}>Progresso do covid</span>
                     </div>
 
-                    <ApexChart />
-                </ContainerLineChart>
-            </>
+                    <ApexChart
+                        type={'bar'}
+                        options={{
+                            options: {
+                                chart: {
+                                    id: "basic-bar"
+                                },
+                                xaxis: {
+                                    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+                                }
+                            }
+                        }}
+                        series={
+                            [
+                                {
+                                    name: "series-1",
+                                    data: [30, 40, 45, 50, 49, 60, 70, 91]
+                                }
+                            ]
+                        }
+                    />
+                </ContainerBarChart>
+
+                {/* Donut and line chats */}
+                <div
+                    style={{ display: 'flex', width: '100%', height: '350px', gap: '20px' }}
+                >
+                    <ContainerDonutChart>
+                        <div
+                            style={{
+                                height: '20%',
+                                borderBottom: '1px solid #00000042',
+                                display: 'flex',
+                                alignItems: 'center',
+                                padding: '10px'
+                            }}
+                        >
+                            <span style={{ marginLeft: '20px' }}>Percentual de funcionários com covid</span>
+                        </div>
+                        <ApexChart
+                            type='donut'
+                            options={{}}
+                            series={[44, 55, 41, 17, 15]}
+                            labels={['A', 'B', 'C', 'D', 'E']}
+                        />
+                    </ContainerDonutChart>
+
+                    <ContainerLineChart>
+                        <div
+                            style={{
+                                height: '20%',
+                                borderBottom: '1px solid #00000042',
+                                display: 'flex',
+                                alignItems: 'center',
+                                padding: '10px'
+                            }}
+                        >
+                            <span style={{ marginLeft: '20px' }}>Percentual de funcionários com covid</span>
+                        </div>
+                        <ApexChart
+                            type='line'
+                            options={{
+                                options: {
+                                    chart: {
+                                        id: "basic-bar"
+                                    },
+                                    xaxis: {
+                                        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+                                    }
+                                }
+                            }}
+                            series={
+                                [
+                                    {
+                                        name: "series-1",
+                                        data: [30, 40, 45, 50, 49, 60, 70, 91]
+                                    }
+                                ]
+                            }
+                        />
+                    </ContainerLineChart>
+                </div>
+            </div>
         )
     }
 }
