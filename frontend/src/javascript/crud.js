@@ -8,7 +8,8 @@ import axios from 'axios';
  */
 export function saveFormInputs(url, formData) {
     axios['post'](url, formData)
-        .then(res => res.data);
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
 }
 
 export async function getDatas(url) {

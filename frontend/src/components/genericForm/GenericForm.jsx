@@ -1,7 +1,7 @@
 import React from 'react';
 import { saveFormInputs } from '../../javascript/crud';
 
-import employeesUrl from '../../constants/index';
+import {registreEmployeeUrl} from '../../constants/index.js';
 
 import styledComponents from './GenericForm'
 const {
@@ -86,6 +86,7 @@ export default class GenericForm extends React.Component {
                             type={inputType}
                             onChange={event => this.handleInputChange(event, keyName)}
                             value={this.state.inputsDatas.keyName}
+                            required
                         />
                     </InputRowContainer>
                 )
@@ -172,7 +173,7 @@ export default class GenericForm extends React.Component {
 
     render() {
         return (
-            <div style={{height: '100%'}}>
+            <div>
                 <Form>
                     <TitleContainer>
                         <span>{this.title}</span>
@@ -190,7 +191,7 @@ export default class GenericForm extends React.Component {
                             // Will make a http req to save the form
                             this.props.showNotificationCard()
                             this.props.exitNotificationCard()
-                            saveFormInputs(employeesUrl, this.state.inputsDatas);
+                            saveFormInputs(registreEmployeeUrl, this.state.inputsDatas);
                         }}
                     >
                         {this.props.submitButtonName || 'Enviar'}

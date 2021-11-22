@@ -11,8 +11,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Axios 
 import { removeData } from '../javascript/crud';
-import employeesUrl from '../constants';
-import axios from 'axios';
+import { employeesUrl } from '../constants';
+import { removeEmployeeUrl } from '../constants';
 import { getDatas } from '../javascript/crud';
 
 // Components
@@ -27,7 +27,7 @@ export default function EmployeesTable() {
   // Geting all employees and set at the tableDatas
   useEffect(() => {
     getDatas(employeesUrl)
-      .then(res => setTabledatas(res))
+      .then(res => setTabledatas(res.usersList))
   }, [tableDatas])
 
   function exitNotificationCard() {
@@ -35,11 +35,10 @@ export default function EmployeesTable() {
       setShowNotification(false);
     }, 2000)
   }
-
   // Removing employee and sohw notification
   const removeEmployee = id => {
-    removeData(employeesUrl, id);
-
+    removeData(removeEmployeeUrl, id);
+    console.log(id);
     setShowNotification(true);
     exitNotificationCard();
   }
@@ -55,10 +54,10 @@ export default function EmployeesTable() {
 
     return employeesDatas.map(employee => {
       // employee id
-      const employeeId = employee.id || '';
+      const employeeId = employee.matricula || '';
 
       // Handle Risk group icon
-      const riskGroup = employee.riskGroup || '';
+      const riskGroup = employee.grupo_de_risco || '';
       const riskGroupIcon = riskGroup ?
         <FontAwesomeIcon
           icon={faCheckCircle}
@@ -91,12 +90,12 @@ export default function EmployeesTable() {
 
       // Mounting employee obj
       const employeeObj = {
-        name: employee.name || '',
-        registry: employee.registry || '',
-        birthDate: employee.birthDate || '',
-        department: employee.department || '',
+        name: employee.nome.trim() || '',
+        registry: employee.matricula || '',
+        birthDate: employee.nascimento || '',
+        department: employee.setor || '',
         riskGroup: riskGroupIcon,
-        vaccine: employee.vaccine || '',
+        vaccine: employee.vacina || '',
         dose: employee.dose || '',
         covid: employeeSickIcon,
         edit: editEmployeeIcon,

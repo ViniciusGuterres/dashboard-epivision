@@ -21,7 +21,9 @@ export default function EmployeeRegistration() {
     }
 
     return (
-        <>
+        <div
+            style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}
+        >
             <GenericForm
                 title={'Cadastro de colaborador'}
                 submitDatas={() => console.log('submited')}
@@ -73,6 +75,6 @@ export default function EmployeeRegistration() {
                 /> :
                 null
             }
-        </>
+        </div>
     )
 };

@@ -9,6 +9,7 @@ import { faVirus } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import ApexChart from "../../components/ApexChat";
+import axios from "axios";
 
 const {
     MainContainerCards,
@@ -21,25 +22,52 @@ const {
 
 export default class Dashboard extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            
+        }
+    }
+
+    componentWillMount() {
+        axios['get']('http://localhost:3010/users/list')
+            .then(res => {
+                this.setState({
+                    ...res.data
+                })
+            })
+    }
+
     render() {
+        // Unpacking state came from backend
+        const covidCasesAmount = this.state.usersInfo && this.state.usersInfo.covidCasesAmount
+            ? this.state.usersInfo.covidCasesAmount : '';
+
+        const registredEmployeesAmount = this.state.usersInfo && this.state.usersInfo.registredEmployeesAmount 
+            ? this.state.usersInfo.registredEmployeesAmount : '';
+
+        const riskGroupEmployeesAmount = this.state.usersInfo && this.state.usersInfo.riskGroupEmployeesAmount 
+            ? this.state.usersInfo.riskGroupEmployeesAmount : '';
+
         return (
             <div>
                 <MainContainerCards>
                     <InfoCards
                         title={'Casos de Covid'}
-                        data={54}
+                        data={covidCasesAmount}
                         icon={faVirus}
                         themeColor={'#34951c'} />
 
                     <InfoCards
                         title={'Funcionários cadastrados'}
-                        data={30}
+                        data={registredEmployeesAmount}
                         icon={faUser}
                         themeColor={'#3b6270'} />
 
                     <InfoCards
                         title={'Funcionários grupo de risco'}
-                        data={2}
+                        data={riskGroupEmployeesAmount}
                         icon={faExclamation}
                         themeColor={'#c91010c7'} />
                 </MainContainerCards>
@@ -157,7 +185,7 @@ function InfoCards(props) {
                 }}
             >
                 <CardTitle>{props.title || ''}</CardTitle>
-                <span style={{ fontSize: '13px' }}>{props.data || ''}</span>
+                <span style={{ fontSize: '13px' }}>{props.data || 0}</span>
             </div>
 
             <FontAwesomeIcon

@@ -6,7 +6,7 @@ const Form = styled.form`
     -webkit-box-shadow: 8px 10px 15px -6px rgba(0,0,0,0.65); 
     box-shadow: 8px 0px 19px -6px rgb(0 0 0 / 20%);
     border-radius: 5px;
-    width: 60%;
+    width: 400px;
 `
 
 const InputContainer = styled.div`
@@ -55,7 +55,7 @@ const InputCheckboxRowContainer = styled.div`
 
 const ButtonSubmit = styled.button`
     width: 100%;
-    background-color: rgb(39, 64, 115);
+    background-color: #4e73df;
     color: #fff;
     font-size: 20px;
     border: none;
