@@ -3,7 +3,8 @@ import { saveFormInputs } from '../../javascript/crud';
 
 import {registreEmployeeUrl} from '../../constants/index.js';
 
-import styledComponents from './GenericForm'
+import styledComponents from './GenericForm.js';
+
 const {
     Form,
     InputContainer,

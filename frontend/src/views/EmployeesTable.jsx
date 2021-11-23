@@ -18,17 +18,26 @@ import { getDatas } from '../javascript/crud';
 // Components
 import Table from '../components/Table';
 import Notification from '../components/notification';
+import ConfirmationModal from '../components/confirmationModal/ConfirmationModal.jsx';
 
 export default function EmployeesTable() {
 
   const [tableDatas, setTabledatas] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [currentId, setCurrentId] = useState('');
 
   // Geting all employees and set at the tableDatas
   useEffect(() => {
     getDatas(employeesUrl)
       .then(res => setTabledatas(res.usersList))
   }, [tableDatas])
+
+  // Toggle confirmation modal to remove employee
+  const toggleShowConfirmationModal = (id) => {
+    setShowConfirmationModal(!showConfirmationModal);
+    setCurrentId(id);
+  }
 
   function exitNotificationCard() {
     setTimeout(() => {
@@ -41,6 +50,7 @@ export default function EmployeesTable() {
     console.log(id);
     setShowNotification(true);
     exitNotificationCard();
+    setShowConfirmationModal(false);
   }
 
   // Go to path
@@ -82,7 +92,7 @@ export default function EmployeesTable() {
 
       // Handle with remove employee icon
       const removeEmployeeIcon =
-        <FontAwesomeIcon icon={faTrashAlt} style={styles.iconRemove} onClick={() => removeEmployee(employeeId)} />
+        <FontAwesomeIcon icon={faTrashAlt} style={styles.iconRemove} onClick={() => toggleShowConfirmationModal(employeeId)} />
 
       // handle with the edit employee icon
       const editEmployeeIcon =
@@ -159,6 +169,16 @@ export default function EmployeesTable() {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+      {
+        showConfirmationModal
+          ? <ConfirmationModal
+              confirm={() => removeEmployee(currentId)}
+              notConfirm={toggleShowConfirmationModal}
+          />
+          : null
+      }
+
       <Table
         columns={columns}
         data={handleDatas()}

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVirus } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
-import ApexChart from "../../components/ApexChat";
+import ApexChart from "../../components/ApexChart";
 import axios from "axios";
 
 const {
