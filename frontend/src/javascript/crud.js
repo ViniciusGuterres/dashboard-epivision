@@ -20,3 +20,8 @@ export async function getDatas(url) {
 export async function removeData(url, id) {
     axios['delete'](`${url}/${id}`)
 }
+
+export async function getViolationsData(url) {
+    return axios['get'](url)
+        .then(res => res.data)
+}

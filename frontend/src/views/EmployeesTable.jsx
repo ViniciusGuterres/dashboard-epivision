@@ -63,6 +63,12 @@ export default function EmployeesTable() {
     const employeesDatas = tableDatas || [];
 
     return employeesDatas.map(employee => {
+      // handle with birth date
+      let day = employee.nascimento.substr(8, 2);
+      let month = employee.nascimento.substr(5, 2);
+      let year = employee.nascimento.substr(0, 4);
+      console.log();
+
       // employee id
       const employeeId = employee.matricula || '';
 
@@ -102,7 +108,7 @@ export default function EmployeesTable() {
       const employeeObj = {
         name: employee.nome.trim() || '',
         registry: employee.matricula || '',
-        birthDate: employee.nascimento || '',
+        birthDate: `${day}/${month}/${year}` || '',
         department: employee.setor || '',
         riskGroup: riskGroupIcon,
         vaccine: employee.vacina || '',

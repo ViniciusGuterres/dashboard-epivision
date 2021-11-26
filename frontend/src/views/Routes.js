@@ -7,6 +7,7 @@ import EditEmployees from './EditEmployees.jsx';
 
 import EmployeeRegistration from './EmployeeRegistration.jsx';
 import EmployeesTable from './EmployeesTable.jsx';
+import violationsHistory from './violationsHistory.jsx';
 
 // Views
 
@@ -17,6 +18,7 @@ export default function Routes() {
             <Route path='/cadastroFuncionario' component={EmployeeRegistration}/>
             <Route path='/listaDeFuncionarios' component={EmployeesTable} />
             <Route path='/editarFuncionario' component={EditEmployees} />
+            <Route path='/historicoDeViolacoes' component={violationsHistory} />
         </Switch>
     )
 }

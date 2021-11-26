@@ -3,7 +3,7 @@ import { saveFormInputs } from '../../javascript/crud';
 
 import {registreEmployeeUrl} from '../../constants/index.js';
 
-import styledComponents from './GenericForm.js';
+import styledComponents from './EditInformationsForm.js';
 
 const {
     Form,
@@ -18,11 +18,11 @@ const {
 } = styledComponents
 
 /**
- * @function GenericForm - Generic form with configurable labels and inputs type
+ * @function EditInformationsForm - Form with configurable labels and inputs type
  * @param {*} props 
  * @returns - node element
  */
-export default class GenericForm extends React.Component {
+export default class EditInformationsForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,7 +30,13 @@ export default class GenericForm extends React.Component {
         this.formContents = props.formContents || [];
         this.title = props.title || '';
 
-        this.initial = {}
+        this.initial = {};
+
+        this.currentEmployeeData = this.props.formContents.map(item => {
+            return {
+                [item.keyName]: item.currentvalue
+            }
+        })
 
         // State
         this.state = {
@@ -41,13 +47,12 @@ export default class GenericForm extends React.Component {
         this.cleanInputDatas = this.cleanInputDatas.bind(this);
     }
 
-
     handleInputChange(event, keyName, inputType) {
         // get the value of text or checkbox input types
         const value = inputType !== 'checkbox' ? event.target.value : event.target.checked;
 
-        let test = { ...this.state.datas }
-        test[keyName] = value
+        let test = { ...this.state.datas };
+        test[keyName] = value;
 
         this.setState(prevState => ({
             inputsDatas: {
@@ -75,7 +80,7 @@ export default class GenericForm extends React.Component {
         });
     }
 
-    layoutForCheckboxInput(inputType, label, keyName, subKeyName, index) {
+    layoutForCheckboxInput(inputType, label, keyName, currentValue, subKeyName, index) {
 
         switch (inputType) {
             case 'text':
@@ -161,10 +166,11 @@ export default class GenericForm extends React.Component {
             const inputType = content.inputType || '';
             const keyName = content.keyName || '';
             const subKeyName = content.subKeyName || '';
+            const currentValue = content.currentValue || '';
 
             return (
                 <>
-                    {this.layoutForCheckboxInput(inputType, label, keyName, subKeyName, index)}
+                    {this.layoutForCheckboxInput(inputType, label, keyName, currentValue, subKeyName, index)}
                 </>
             )
         })
@@ -172,6 +178,7 @@ export default class GenericForm extends React.Component {
     };
 
     render() {
+        console.log('TEST', this.currentEmployeeData);
         return (
             <div>
                 <Form>

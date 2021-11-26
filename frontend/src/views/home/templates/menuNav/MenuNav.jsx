@@ -49,6 +49,14 @@ export default function MenuNav(props) {
                             Lista de colaboradores
                         </Link>
                     </Li>
+
+                    <Li>
+                        <Link
+                            to="/historicoDeViolacoes"
+                            style={{ textDecoration: 'none', color: '#fff' }}>
+                            Histórico de colaborador sem máscara
+                        </Link>
+                    </Li>
                 </Ul>
             </nav>
         </Aside>

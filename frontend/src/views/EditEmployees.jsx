@@ -1,10 +1,10 @@
-import GenericForm from '../components/genericForm/GenericForm.jsx';
+import EditInformationsForm from '../components/editInformationsForm/EditInformationsForm.jsx';
 
 export default function EditEmployees(props) {
 
     return (
         <div style={{display: 'flex', justifyContent: 'center', textAlign: 'center', height: '100%'}}>
-            <GenericForm
+            <EditInformationsForm
                 style={{height: '100%', width: '100%'   }}
                 title={'Editar colaborador'}
                 // submitDatas={() => {}}
@@ -14,32 +14,38 @@ export default function EditEmployees(props) {
                         {
                             label: 'Matricula*',
                             inputType: 'text',
-                            keyName: 'registry'
+                            keyName: 'registry',
+                            currentValue: 'test_mat'
                         },
                         {
                             label: 'Nome*',
                             inputType: 'text',
-                            keyName: 'name'
+                            keyName: 'name',
+                            currentValue: 'test_nome'
                         },
                         {
                             label: 'Nascimento',
                             inputType: 'text',
-                            keyName: 'birthDate'
+                            keyName: 'birthDate',
+                            currentValue: 'test_nasc'
                         },
                         {
                             label: 'Setor*',
                             inputType: 'text',
-                            keyName: 'department'
+                            keyName: 'department',
+                            currentValue: 'test_depart'
                         },
                         {
                             label: 'Grupo de risco',
                             inputType: 'checkbox',
-                            keyName: 'riskGroup'
+                            keyName: 'riskGroup',
+                            currentValue: 'test_risk_group'
                         },
                         {
                             label: 'Positivo para covid',
                             inputType: 'checkbox',
-                            keyName: 'riskGroup'
+                            keyName: 'riskGroup',
+                            currentValue: 'test_covid'
                         },
                     ]
                 }
