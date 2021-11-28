@@ -3,6 +3,8 @@ import React from 'react';
 // Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartPie } from '@fortawesome/free-solid-svg-icons'
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 // router
 import { Link } from 'react-router-dom';
@@ -22,7 +24,7 @@ export default function MenuNav(props) {
                         {/* Chart Pie icon */}
                         <FontAwesomeIcon
                             icon={faChartPie}
-                            style={{marginRight: '10px'}}
+                            style={{ marginRight: '10px' }}
                         />
 
                         {/* Dashboard Link */}
@@ -55,6 +57,30 @@ export default function MenuNav(props) {
                             to="/historicoDeViolacoes"
                             style={{ textDecoration: 'none', color: '#fff' }}>
                             Histórico de colaborador sem máscara
+                        </Link>
+                    </Li>
+
+                    <Li>
+                        <FontAwesomeIcon
+                            icon={faCog}
+                            style={{ marginRight: '10px' }}
+                        />
+                        <Link
+                            to="/"
+                            style={{ textDecoration: 'none', color: '#fff' }}>
+                            Config
+                        </Link>
+                    </Li>
+
+                    <Li>
+                        <FontAwesomeIcon
+                            icon={faUserAlt}
+                            style={{ marginRight: '10px' }}
+                        />
+                        <Link
+                            to="/"
+                            style={{ textDecoration: 'none', color: '#fff' }}>
+                            Usuário
                         </Link>
                     </Li>
                 </Ul>
