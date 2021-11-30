@@ -9,16 +9,18 @@ import { getViolationsData } from '../javascript/crud';
 
 // Components
 import Table from '../components/Table';
+import Notification from '../components/notification';
 
 export default function ViolationsHistory() {
 
   const [tableDatas, setTabledatas] = useState([]);
+  const [showNotification, setShowNotification] = useState(false);
 
   // Geting all violationss and set at the tableDatas
   useEffect(() => {
     getViolationsData('http://localhost:3010/historyViolations')
       // .then(res => console.log('test', res))
-      .then(res => setTabledatas(res))
+      .then(res => setTabledatas(res), setShowNotification(true))
   }, [tableDatas])
 
   // Handle datas to show at the table
@@ -84,6 +86,15 @@ export default function ViolationsHistory() {
         columns={columns}
         data={handleDatas()}
       />
+
+      {showNotification ?
+        <Notification
+          type={'warning'}
+          title={'Violaçaõ detectada'}
+          subtitle={'Colobarador sem máscara detectado'}
+        /> :
+        null
+      }
     </div>
   )
 }
