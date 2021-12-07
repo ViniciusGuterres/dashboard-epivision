@@ -18,13 +18,28 @@ export default function ViolationsHistory() {
 
   // Geting all violationss and set at the tableDatas
   useEffect(() => {
-    getViolationsData('http://localhost:3010/historyViolations')
-      // .then(res => console.log('test', res))
-      .then(res => setTabledatas(res), setShowNotification(true))
+    getViolations();
+
   }, [tableDatas])
 
+  function getViolations() {
+    getViolationsData('http://localhost:3010/historyViolations')
+    .then(res => setTabledatas(res))
+    .then(() => showNotificationCard())
+  }
+
+  function showNotificationCard() {
+    setShowNotification(true)
+}
+
+function exitNotificationCard() {
+    setTimeout(() => {
+        setShowNotification(false);
+    }, 6000)
+}
+
   // Handle datas to show at the table
-  const handleDatas = () => {
+  const handleDatas = () => { 
     const violationsDatas = tableDatas || [];
 
     return violationsDatas.map(violations => {
@@ -56,7 +71,7 @@ export default function ViolationsHistory() {
   const columns = useMemo(
     () => [
       {
-        Header: "Histórico de colaboradores sem máscara",
+        Header: "Histórico de violações",
         columns: [
           {
             Header: "Data",
@@ -79,6 +94,7 @@ export default function ViolationsHistory() {
     ],
     []
   );
+  
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

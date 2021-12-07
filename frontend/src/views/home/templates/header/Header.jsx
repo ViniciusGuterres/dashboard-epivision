@@ -30,7 +30,7 @@ export default function Header(props) {
                 />
 
                 {/* Title company name */}
-                <CompanyName>Epi Vision</CompanyName>
+                <CompanyName>EPI VISION</CompanyName>
 
                 {/* Search box */}
                 <SearchBar>

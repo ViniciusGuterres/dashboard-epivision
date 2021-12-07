@@ -26,7 +26,7 @@ export default class Dashboard extends React.Component {
         super(props);
 
         this.state = {
-            
+
         }
     }
 
@@ -44,10 +44,10 @@ export default class Dashboard extends React.Component {
         const covidCasesAmount = this.state.usersInfo && this.state.usersInfo.covidCasesAmount
             ? this.state.usersInfo.covidCasesAmount : '';
 
-        const registredEmployeesAmount = this.state.usersInfo && this.state.usersInfo.registredEmployeesAmount 
+        const registredEmployeesAmount = this.state.usersInfo && this.state.usersInfo.registredEmployeesAmount
             ? this.state.usersInfo.registredEmployeesAmount : '';
 
-        const riskGroupEmployeesAmount = this.state.usersInfo && this.state.usersInfo.riskGroupEmployeesAmount 
+        const riskGroupEmployeesAmount = this.state.usersInfo && this.state.usersInfo.riskGroupEmployeesAmount
             ? this.state.usersInfo.riskGroupEmployeesAmount : '';
 
         return (
@@ -60,13 +60,13 @@ export default class Dashboard extends React.Component {
                         themeColor={'#34951c'} />
 
                     <InfoCards
-                        title={'Funcionários cadastrados'}
+                        title={'Funcionários Cadastrados'}
                         data={registredEmployeesAmount}
                         icon={faUser}
                         themeColor={'#3b6270'} />
 
                     <InfoCards
-                        title={'Funcionários grupo de risco'}
+                        title={'Funcionários Grupo de Risco'}
                         data={riskGroupEmployeesAmount}
                         icon={faExclamation}
                         themeColor={'#c91010c7'} />
@@ -82,7 +82,7 @@ export default class Dashboard extends React.Component {
                             padding: '10px'
                         }}
                     >
-                        <span style={{ marginLeft: '20px' }}>Progresso do covid</span>
+                        <span style={{ marginLeft: '20px' }}>Progresso do COVID-19</span>
                     </div>
 
                     <ApexChart
@@ -90,10 +90,10 @@ export default class Dashboard extends React.Component {
                         options={{
                             options: {
                                 chart: {
-                                    id: "basic-bar"
+                                    id: "basic-bar",
                                 },
                                 xaxis: {
-                                    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+                                    categories: [],
                                 }
                             }
                         }}
@@ -122,11 +122,19 @@ export default class Dashboard extends React.Component {
                                 padding: '10px'
                             }}
                         >
-                            <span style={{ marginLeft: '20px' }}>Percentual de funcionários com covid</span>
+                            <span style={{ marginLeft: '20px' }}>Percentual de funcionários com COVID-19</span>
                         </div>
                         <ApexChart
                             type='donut'
-                            options={{}}
+                            options={{
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                legend: {
+                                    show: true,
+                                },
+                                labels: ['Logística', 'Rh', 'TI', 'Adm', 'Produção']
+                            }}
                             series={[44, 55, 41, 17, 15]}
                             labels={['A', 'B', 'C', 'D', 'E']}
                         />
@@ -142,7 +150,7 @@ export default class Dashboard extends React.Component {
                                 padding: '10px'
                             }}
                         >
-                            <span style={{ marginLeft: '20px' }}>Percentual de funcionários com covid</span>
+                            <span style={{ marginLeft: '20px' }}>Quantidade de casos de COVID-19 por mês</span>
                         </div>
                         <ApexChart
                             type='line'

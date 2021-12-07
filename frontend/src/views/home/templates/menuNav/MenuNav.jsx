@@ -2,9 +2,7 @@ import React from 'react';
 
 // Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChartPie } from '@fortawesome/free-solid-svg-icons'
-import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserAlt, faCog, faChartPie, faListAlt, faHistory, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
 // router
 import { Link } from 'react-router-dom';
@@ -37,26 +35,41 @@ export default function MenuNav(props) {
                     </Li>
 
                     <Li>
+                        <FontAwesomeIcon
+                            icon={faIdCard}
+                            style={{ marginRight: '10px' }}
+                        />
+
                         <Link
                             to="/cadastroFuncionario"
                             style={{ textDecoration: 'none', color: '#fff' }}>
-                            Cadastrar colaborador
+                            Cadastrar Colaborador
                         </Link>
                     </Li>
 
                     <Li>
+                        <FontAwesomeIcon
+                            icon={faListAlt}
+                            style={{ marginRight: '10px' }}
+                        />
+
                         <Link
                             to="/listaDeFuncionarios"
                             style={{ textDecoration: 'none', color: '#fff' }}>
-                            Lista de colaboradores
+                            Lista de Colaboradores
                         </Link>
                     </Li>
 
                     <Li>
+                        <FontAwesomeIcon
+                            icon={faHistory}
+                            style={{ marginRight: '10px' }}
+                        />
+
                         <Link
                             to="/historicoDeViolacoes"
                             style={{ textDecoration: 'none', color: '#fff' }}>
-                            Histórico de colaborador sem máscara
+                            Histórico de Violações
                         </Link>
                     </Li>
 
@@ -68,7 +81,7 @@ export default function MenuNav(props) {
                         <Link
                             to="/"
                             style={{ textDecoration: 'none', color: '#fff' }}>
-                            Config
+                            Configurações
                         </Link>
                     </Li>
 
