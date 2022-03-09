@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const Head = styled.header`
     background-color: #fff;
-    grid-area: header;
     border-bottom: 1px solid #0000001f;
     display: flex;
     align-items: center;
+    height: 70px;
+    width: 100%;
     padding: 20px;
 `
 

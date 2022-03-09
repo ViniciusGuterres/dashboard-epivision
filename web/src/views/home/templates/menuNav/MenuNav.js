@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const Aside = styled.aside`
-    background-color: #4e73df;
-    grid-area: menu;
+    background-color: #1e1e1e;
     box-shadow: rgb(122 122 158 / 15%) 4px 2px 6px;
-    width: 100%;
+    width: 30%;
+    height: 100%;
 `;
 
 const Li = styled.li`
